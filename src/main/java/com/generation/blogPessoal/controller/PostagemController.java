@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -50,10 +49,10 @@ public class PostagemController {
 
 	}
 
-	@PostMapping("/post")
+	@PostMapping("/create")
 	public ResponseEntity<Postagem> createPostagem(@Valid @RequestBody Postagem newPost) {
 		Postagem postCreate = postagemRepository.save(newPost);
-		return ResponseEntity.status(HttpStatus.CREATED).body(postagemRepository.save(postCreate));
+		return ResponseEntity.status(HttpStatus.CREATED).body(postCreate);
 	}
 		
 	@PutMapping("/update")

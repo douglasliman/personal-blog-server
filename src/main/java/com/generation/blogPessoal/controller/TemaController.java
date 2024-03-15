@@ -57,17 +57,26 @@ public class TemaController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(temaRepository.save(newTema));
 	}
 		
-	@PutMapping("/update")
+	/*@PutMapping("/update")
 	public ResponseEntity<Tema> updatePost(@Valid @RequestBody Tema updateTema) {
 	    return temaRepository.findById(updateTema.getId())
 	    		.map(resposta -> {
-	    			
+	    			updateTema.setPostagem(resposta.getPostagem());
 	    			Tema temaAtualizado = temaRepository.save(updateTema);
 	    			
 	        return ResponseEntity.status(HttpStatus.OK).body(temaAtualizado);
 	    }).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	}*/
+	
+	@PutMapping("/update")
+	public ResponseEntity<Tema> put(@Valid @RequestBody Tema tema){
+		
+		Tema temaAtualizado = temaRepository.save(tema);
+		return temaRepository.findById(tema.getId())
+				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED)
+						.body(temaAtualizado))
+				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
-
 
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/delete/{id}")
