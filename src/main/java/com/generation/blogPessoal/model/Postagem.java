@@ -35,7 +35,10 @@ public class Postagem {
 	@ManyToOne 
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
-	
+
+	@ManyToOne
+	@JsonIgnoreProperties("postagens")
+	private Usuario usuario;
 	
 	@CreationTimestamp
 	private LocalDateTime createdAt;
