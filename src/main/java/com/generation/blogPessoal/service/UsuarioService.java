@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 
-
 @Service
 public class UsuarioService {
 
@@ -42,11 +41,11 @@ public class UsuarioService {
 
     public Optional<Usuario> atualizarUsuario(Usuario usuario) {
 
-        if(usuarioRepository.findById(usuario.getId()).isPresent()) {
+        if (usuarioRepository.findById(usuario.getId()).isPresent()) {
 
             Optional<Usuario> buscaUsuario = usuarioRepository.findByUsuario(usuario.getUsuario());
 
-            if ( (buscaUsuario.isPresent()) && ( buscaUsuario.get().getId() != usuario.getId()))
+            if ((buscaUsuario.isPresent()) && (buscaUsuario.get().getId() != usuario.getId()))
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
 
             usuario.setSenha(criptografarSenha(usuario.getSenha()));
