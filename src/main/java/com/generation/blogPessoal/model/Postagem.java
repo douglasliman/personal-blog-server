@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -22,12 +23,15 @@ public class Postagem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Schema(description = "ID de postagem")
 	private Long id;
 
+	@Schema(description = "Título da postagem")
 	@NotBlank(message = "o Atriburo titulo é Obrigatório")
 	@Size(min = 5, max = 100, message = "O atriburo deve conter no mínimo 05 e no máximo 100 caracteres")
 	private String titulo;
 
+	@Schema(description = "Texto da postagem")
 	@NotBlank(message = "o Atriburo texto é Obrigatório")
 	@Size(min = 10, message = "O atributo deve conter no mínimo 05 caracteres")
 	private String texto;
