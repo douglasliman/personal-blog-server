@@ -33,7 +33,6 @@ public class Usuario {
 	@Schema(description = "Senha do usuário")
 	@NotBlank(message = "O Atributo Senha é Obrigatório!")
 	@Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
-	@JsonIgnore
 	private String senha;
 
 	@Schema(description = "Link da foto do usuário")

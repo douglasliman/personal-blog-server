@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/usuario")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
 
